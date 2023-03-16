@@ -1,0 +1,13 @@
+FIRST=1
+LAST=2
+ID=3
+DOT=4
+LBRACK=5
+RBRACK=6
+INT=7
+WS=8
+'first'=1
+'last'=2
+'.'=4
+'['=5
+']'=6
