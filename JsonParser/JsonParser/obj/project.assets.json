@@ -82,24 +82,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\olial\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\epatr\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\olial\\OneDrive\\Escritorio\\json\\JsonParser\\JsonParser\\JsonParser.csproj",
+      "projectUniqueName": "C:\\Users\\epatr\\Source\\Repos\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj",
       "projectName": "JsonParser",
-      "projectPath": "C:\\Users\\olial\\OneDrive\\Escritorio\\json\\JsonParser\\JsonParser\\JsonParser.csproj",
-      "packagesPath": "C:\\Users\\olial\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\olial\\OneDrive\\Escritorio\\json\\JsonParser\\JsonParser\\obj\\",
+      "projectPath": "C:\\Users\\epatr\\Source\\Repos\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj",
+      "packagesPath": "C:\\Users\\epatr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\epatr\\Source\\Repos\\BusquedaJSON\\JsonParser\\JsonParser\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\olial\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\epatr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
