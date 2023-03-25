@@ -40,10 +40,14 @@ try
             Console.ReadKey(true);
             continue;
         }
+
+        ImmediateErrorListener listener = new();
         var inputStream = CharStreams.fromString(input);
         var lexer = new JSONSearcherLexer(inputStream);
         var tokenStream = new CommonTokenStream(lexer);
         var parser = new JSONSearcherParser(tokenStream);
+        parser.RemoveErrorListeners();
+        parser.AddErrorListener(listener);
         var tree = parser.parse();
 
         Console.WriteLine(Environment.NewLine);
@@ -55,7 +59,8 @@ try
 }
 catch (Exception ex)
 {
-    Console.Write(ex.Message);
+    Console.Clear();
+    Console.WriteLine(ex.Message);
 }
 finally
 {
