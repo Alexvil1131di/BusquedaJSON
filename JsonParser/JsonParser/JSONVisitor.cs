@@ -97,7 +97,14 @@ public class JSONVisitors : JSONSearcherBaseVisitor<dynamic>
 
             var value = jsonObj[identificador];
 
-            Console.WriteLine($"Valor de {identificador}: {value}");
+            if (value is not null)
+            {
+                Console.WriteLine($"Valor de {identificador}: {value}");
+            }
+            else
+            {
+                Console.WriteLine($"Valor no encontrado");
+            }
 
             return identificador;
         }
