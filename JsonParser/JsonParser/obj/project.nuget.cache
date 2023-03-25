@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "oZTuEvW0EO+hicGSToXB4Hujr2dLC8KLAQ9XPryR3V05XxLPz4S4LyPtSRUocP1cGdQnGCYqSJrTwEfAgVyAyA==",
+  "dgSpecHash": "Sa7ic/nttVQ4HpF3JsdkGUiFkmjK7277psIslluk4H1d+ImKbXXj5jk0hBQ4DCkwFlC9pGCbi4dfcVfu0rxMEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\olial\\OneDrive\\Escritorio\\json\\JsonParser\\JsonParser\\JsonParser.csproj",
+  "projectFilePath": "C:\\Users\\epatr\\Desktop\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\olial\\.nuget\\packages\\antlr4.runtime.standard\\4.9.2\\antlr4.runtime.standard.4.9.2.nupkg.sha512",
-    "C:\\Users\\olial\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\epatr\\.nuget\\packages\\antlr4.runtime.standard\\4.9.2\\antlr4.runtime.standard.4.9.2.nupkg.sha512",
+    "C:\\Users\\epatr\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

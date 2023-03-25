@@ -3,60 +3,119 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace JsonParser;
 
-public class JSONVisitors : JSONSearcherBaseVisitor<string>
+public class JSONVisitors : JSONSearcherBaseVisitor<dynamic>
 {
-    private readonly string jsonStr;
-    private readonly dynamic jsonObj;
+    public readonly dynamic jsonObj = new Dictionary<string, object>();
+    public string json = string.Empty;
 
-    public JSONVisitors(string jsonStr)
+    public JSONVisitors()
     {
-        this.jsonStr = jsonStr;
-        jsonObj = JsonConvert.DeserializeObject(jsonStr) ?? throw new Exception("Error en servicio");
+        try
+        {
+            string jsonFilePath = @"..\..\..\file.json";
+            json = File.ReadAllText(jsonFilePath);
+            jsonObj = JsonConvert.DeserializeObject<Dictionary<string, object>>(json)!;
+        }
+        catch (Exception ex)
+        {
+            string str = ex switch
+            {
+                FileNotFoundException => "El archivo no ha sido encontrado en la ruta espericifada, por favor asegurese de que el archivo exista.\nRuta correcta del archivo: BusquedaJSON\\JsonParser\\JsonParser",
+                JsonSerializationException => "El json ingresado esta incorrecto, por favor verifique que no hayan caracteres faltantes o mal colocados.",
+                _ => "Error en servicio"
+            };
+            Console.WriteLine(str);
+        }
     }
 
-    public override string VisitChild([NotNull] JSONSearcherParser.ChildContext context)
+    public override dynamic VisitChild([NotNull] JSONSearcherParser.ChildContext context)
     {
-        var expresion = Visit(context.expr());
-        var identificador = context.ID().GetText();
+        try
+        {
+            dynamic value;
+            var identificador = context.ID().GetText();
 
-        var value = jsonObj[expresion][identificador];
+            var expresion = Visit(context.expr());
+            if (expresion is string)
+            {
+                value = jsonObj[expresion][identificador];
+                Console.WriteLine($"Valor de {expresion}.{identificador}: {value}");
+            }
+            else
+            {
+                value = expresion[identificador];
+                Console.WriteLine($"Valor de {identificador}: {value}");
+            }
 
-        Console.WriteLine($"Valor de {expresion}.{identificador}: {value}");
-
-        return value.ToString();
+            return value;
+        }
+        catch (Exception ex)
+        {
+            return ex;
+        }
     }
 
-    public override string VisitChildAttribute([NotNull] JSONSearcherParser.ChildAttributeContext context)
+    public override dynamic VisitChildAttribute([NotNull] JSONSearcherParser.ChildAttributeContext context)
     {
-        var expresion = Visit(context.expr());
-        int index = context.op.Type == JSONSearcherLexer.INT ? int.Parse(context.op.Text) :
-                    context.op.Type == JSONSearcherLexer.FIRST ? 0 :
-                    context.op.Type == JSONSearcherLexer.LAST ? jsonObj[expresion].Count - 1 :
-                    jsonObj[expresion].Count - 1;
+        try
+        {
+            dynamic value;
+            var expresion = Visit(context.expr());
 
+            if (expresion is string)
+            {
+                int index = context.op.Type == JSONSearcherLexer.INT ? int.Parse(context.op.Text) :
+                            context.op.Type == JSONSearcherLexer.FIRST ? 0 :
+                            context.op.Type == JSONSearcherLexer.LAST ? jsonObj[expresion].Count - 1 :
+                            jsonObj[-1].Count - 1;
+                value = jsonObj[expresion][index];
+                Console.WriteLine($"Valor de {expresion}[{index}]: {value}");
+            }
+            else
+            {
+                int index = context.op.Type == JSONSearcherLexer.INT ? int.Parse(context.op.Text) :
+                            context.op.Type == JSONSearcherLexer.FIRST ? 0 :
+                            context.op.Type == JSONSearcherLexer.LAST ? expresion.Count - 1 :
+                            expresion.Count - 1;
+                value = expresion[index];
+                Console.WriteLine($"Valor de {index}: {value}");
+            }
 
-
-
-        var value = jsonObj[expresion][index];
-
-        Console.WriteLine($"Valor de {expresion}[{index}]: {value}");
-
-        return value.ToString();
+            return value;
+        }
+        catch (Exception ex)
+        {
+            return ex;
+        }
     }
 
-    public override string VisitParent([NotNull] JSONSearcherParser.ParentContext context)
+    public override dynamic VisitParent([NotNull] JSONSearcherParser.ParentContext context)
     {
-        var identificador = context.ID().GetText();
+        try
+        {
+            var identificador = context.ID().GetText();
 
-        var value = jsonObj[identificador];
+            var value = jsonObj[identificador];
 
-        Console.WriteLine($"Valor de {identificador}: {value}");
+            Console.WriteLine($"Valor de {identificador}: {value}");
 
-        return identificador;
+            return identificador;
+        }
+        catch (Exception ex)
+        {
+            return ex;
+        }
     }
 
-    public override string VisitParse([NotNull] JSONSearcherParser.ParseContext context)
+    public override dynamic VisitParse([NotNull] JSONSearcherParser.ParseContext context)
     {
-        return base.VisitParse(context);
+        try
+        {
+            return base.VisitParse(context);
+        }
+        catch (Exception ex)
+        {
+            return ex;
+        }
     }
 }
