@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\epatr\\source\\repos\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj": {}
+    "C:\\Users\\epatr\\Desktop\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj": {}
   },
   "projects": {
-    "C:\\Users\\epatr\\source\\repos\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj": {
+    "C:\\Users\\epatr\\Desktop\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\epatr\\source\\repos\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj",
+        "projectUniqueName": "C:\\Users\\epatr\\Desktop\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj",
         "projectName": "JsonParser",
-        "projectPath": "C:\\Users\\epatr\\source\\repos\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj",
+        "projectPath": "C:\\Users\\epatr\\Desktop\\BusquedaJSON\\JsonParser\\JsonParser\\JsonParser.csproj",
         "packagesPath": "C:\\Users\\epatr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\epatr\\source\\repos\\BusquedaJSON\\JsonParser\\JsonParser\\obj\\",
+        "outputPath": "C:\\Users\\epatr\\Desktop\\BusquedaJSON\\JsonParser\\JsonParser\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\epatr\\AppData\\Roaming\\NuGet\\NuGet.Config",
