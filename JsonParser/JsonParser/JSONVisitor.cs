@@ -5,21 +5,14 @@ namespace JsonParser;
 
 public class JSONVisitors : JSONSearcherBaseVisitor<string>
 {
-    public static readonly string json = @"
-        {
-            ""firstName"": ""John"",
-            ""lastName"": ""doe"",
-            ""age"": 26,
-            ""address"": {
-                ""streetAddress"": ""naist street"",
-                ""city"": ""Nara"",
-                ""postalCode"": ""630-0192""
-            },
-            ""phoneNumbers"": [32, 25, 43]
-        }
-    ";
+    private readonly string jsonStr;
+    private readonly dynamic jsonObj;
 
-    public dynamic jsonObj = JsonConvert.DeserializeObject(json) ?? throw new Exception("Error en servicio");
+    public JSONVisitors(string jsonStr)
+    {
+        this.jsonStr = jsonStr;
+        jsonObj = JsonConvert.DeserializeObject(jsonStr) ?? throw new Exception("Error en servicio");
+    }
 
     public override string VisitChild([NotNull] JSONSearcherParser.ChildContext context)
     {
@@ -38,7 +31,10 @@ public class JSONVisitors : JSONSearcherBaseVisitor<string>
         var expresion = Visit(context.expr());
         int index = context.op.Type == JSONSearcherLexer.INT ? int.Parse(context.op.Text) :
                     context.op.Type == JSONSearcherLexer.FIRST ? 0 :
+                    context.op.Type == JSONSearcherLexer.LAST ? jsonObj[expresion].Count - 1 :
                     jsonObj[expresion].Count - 1;
+
+
 
 
         var value = jsonObj[expresion][index];

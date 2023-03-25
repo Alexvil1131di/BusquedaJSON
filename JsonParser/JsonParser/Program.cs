@@ -3,18 +3,19 @@ using JsonParser;
 
 bool salir = false;
 string input = string.Empty;
+string inputJson = string.Empty;
+
+Console.WriteLine("Ingrese el JSON: ");
+input = Console.ReadLine() ?? "";
 
 do
 {
     Console.Clear();
 
-    Console.WriteLine(JSONVisitors.json + Environment.NewLine);
-
+    Console.WriteLine(Environment.NewLine);
     Console.WriteLine("Seleccione una acción para realizar\n" +
                           "1. Mostrar elemento actual\n" +
-                          "2. Buscar child por nombre y/o posicion\n" +
-                          "3. Primer child\n" +
-                          "4. Último child\n" +
+                          "2. Buscar un elemento\n" +
                           "ESCAPE para terminar\n");
     ConsoleKeyInfo key = Console.ReadKey(true);
 
@@ -23,18 +24,8 @@ do
         case ConsoleKey.D1:
             break;
         case ConsoleKey.D2:
-            Console.Write("¿Cuál elemento quiere? (use un punto '.' para buscar sub-elementos): ");
+            Console.Write("¿Cuál elemento quiere?");
             input = Console.ReadLine() ?? "";
-            break;
-        case ConsoleKey.D3:
-            Console.Write("¿Cuál elemento quiere? (Indique una pocisión iniciando con 1 segun el número de elementos): ");
-            int indice = Convert.ToInt32(Console.ReadLine());
-            input += $"[{--indice}]";
-            break;
-        case ConsoleKey.D4:
-            Console.Write("Especifique el elemento padre (use un punto '.' para buscar sub-elementos): ");
-            input = Console.ReadLine() ?? "";
-            input += "[last]";
             break;
         case ConsoleKey.Escape:
             Console.WriteLine("El programa sera cerrado en breve...");
@@ -54,7 +45,7 @@ do
     var tokenStream = new CommonTokenStream(lexer);
     var parser = new JSONSearcherParser(tokenStream);
     var tree = parser.parse();
-    var searcher = new JSONVisitors();
+    var searcher = new JSONVisitors(inputJson);
 
     Console.WriteLine(Environment.NewLine);
 
